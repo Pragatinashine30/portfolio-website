@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pragati Nashine — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0e0e12;--surface:#13131a;--card:#18181f;--border:rgba(139,92,246,0.2);--purple:#8b5cf6;--purple-hi:#a78bfa;--purple-lo:#6d28d9;--cyan:#22d3ee;--pink:#e879f9;--text:#f0f0f8;--muted:#6b6b84;--muted2:#9090aa}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 4rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(14,14,18,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'IBM Plex Mono',monospace;font-size:.9rem;font-weight:500;color:var(--purple-hi);letter-spacing:.15em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);text-decoration:none;letter-spacing:.18em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--purple-hi)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.05) 1px,transparent 1px);background-size:60px 60px;animation:drift 20s linear infinite;pointer-events:none}
+@keyframes drift{to{background-position:60px 60px}}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(109,40,217,.18),transparent 65%);top:-100px;right:-100px;animation:flt 10s ease-in-out infinite}
+.orb2{width:300px;height:300px;background:radial-gradient(circle,rgba(34,211,238,.1),transparent 65%);bottom:50px;left:50px;animation:flt 8s ease-in-out infinite 2s}
+@keyframes flt{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+.hero-text{text-align:center;position:relative;z-index:2;max-width:700px}
+h1{font-family:'Syne',sans-serif;font-size:clamp(3.5rem,6vw,6rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:.5rem;animation:up .8s ease both}
+.n1{display:block;color:var(--text)}
+.n2{display:block;background:linear-gradient(135deg,var(--purple-hi),var(--cyan),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--purple-hi);letter-spacing:.3em;text-transform:uppercase;margin-bottom:2rem;animation:up .8s .15s ease both;display:flex;align-items:center;gap:.5rem;justify-content:center}
+.hsub::before{content:'//';color:var(--muted)}
+.rotator{min-height:60px;position:relative;margin-bottom:2.5rem;animation:up .8s .3s ease both}
+.rline{position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(8px);width:100%;text-align:center;font-size:1rem;color:var(--muted2);line-height:1.75;opacity:0;transition:opacity .5s,transform .5s;pointer-events:none}
+.rline.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.hl{color:var(--purple-hi)}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:nowrap;animation:up .8s .45s ease both}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.bp{padding:.8rem 1.8rem;background:linear-gradient(135deg,var(--purple-lo),var(--purple));color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:transform .2s,box-shadow .3s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));white-space:nowrap}
+.bp:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(139,92,246,.5)}
+.bo{padding:.8rem 1.8rem;border:1px solid rgba(139,92,246,.4);color:var(--purple-hi);font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .3s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));white-space:nowrap}
+.bo:hover{background:rgba(139,92,246,.08);transform:translateY(-2px)}
+.bc{padding:.8rem 1.8rem;border:1px solid rgba(34,211,238,.4);color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:all .3s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));white-space:nowrap}
+.bc:hover{background:rgba(34,211,238,.07);transform:translateY(-2px)}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat{padding:2rem;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.sn{font-family:'Syne',sans-serif;font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,var(--purple-hi),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.sl{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-top:.4rem}
+section{padding:6rem 4rem}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--purple-hi);letter-spacing:.3em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.tag::before{content:'';width:32px;height:1px;background:linear-gradient(90deg,var(--purple),var(--cyan))}
+.tag::after{content:'';width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan)}
+h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+h2 em{font-style:normal;background:linear-gradient(135deg,var(--purple-hi),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+#about{background:var(--surface)}
+.aname{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--purple-hi),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.75rem;margin-top:2.5rem}
+.arole{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--purple-hi);letter-spacing:.28em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+.arole::before{content:'//';color:var(--muted)}
+.adesc{color:var(--muted2);line-height:1.9;font-size:1rem;max-width:760px}
+.hi{color:var(--purple-hi);font-weight:500}
+.hc{color:var(--cyan)}
+#skilled{background:var(--bg)}
+.chips{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:3rem}
+.chip{padding:.5rem 1rem;border:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted2);transition:all .3s;cursor:default;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px))}
+.chip:hover{border-color:var(--purple-hi);color:var(--purple-hi);box-shadow:0 0 12px rgba(139,92,246,.2)}
+#experience{background:var(--surface)}
+.timeline{margin-top:3.5rem;position:relative}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--purple),var(--cyan),transparent)}
+.exp{padding-left:3rem;padding-bottom:3.5rem;position:relative;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
+.exp.vis{opacity:1;transform:translateX(0)}
+.exp::before{content:'';position:absolute;left:-5px;top:6px;width:11px;height:11px;background:var(--purple);border-radius:50%;box-shadow:0 0 0 3px var(--surface),0 0 18px var(--purple)}
+.ep{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--cyan);letter-spacing:.2em;margin-bottom:.5rem}
+.er{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:700;margin-bottom:.2rem}
+.ec{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--muted);margin-bottom:1.1rem}
+.eb{list-style:none}
+.eb li{color:var(--muted2);font-size:.9rem;line-height:1.75;padding:.3rem 0 .3rem 1.4rem;position:relative}
+.eb li::before{content:'▸';position:absolute;left:0;color:var(--purple-hi)}
+.et{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.etag{padding:.2rem .65rem;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.25);font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--purple-hi);letter-spacing:.1em;text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px))}
+#projects{background:var(--bg)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem}
+.pcard{background:var(--card);border:1px solid var(--border);padding:2.5rem;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s,box-shadow .3s;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.pcard.vis{opacity:1;transform:translateY(0)}
+.pcard:hover{box-shadow:0 0 36px rgba(139,92,246,.2);transform:translateY(-4px) !important;border-color:rgba(139,92,246,.35)}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--pink));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.pcard:hover::before{transform:scaleX(1)}
+.pnum{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--purple-hi);letter-spacing:.25em;margin-bottom:1rem;opacity:.6}
+.ptitle{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1rem;line-height:1.2}
+.pdesc{color:var(--muted2);font-size:.86rem;line-height:1.75;margin-bottom:1.5rem}
+.mrow{display:flex;gap:1.5rem;flex-wrap:wrap}
+.mv{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple-hi),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.mk{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+#education{background:var(--surface)}
+.educard{margin-top:3.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;padding:3rem;border:1px solid var(--border);background:var(--card);position:relative;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
+.educard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan))}
+.edeg{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:.5rem}
+.eschl{color:var(--muted2);font-size:.88rem;margin-bottom:.3rem}
+.eyr{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--cyan);letter-spacing:.2em;margin-bottom:.4rem}
+.cgpa{font-family:'Syne',sans-serif;font-size:4rem;font-weight:800;text-align:center;background:linear-gradient(135deg,var(--purple-hi),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cgpal{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;text-align:center}
+#contact{background:var(--bg)}
+.cinner{max-width:700px;margin-top:3.5rem}
+.cintro{color:var(--muted2);font-size:1rem;line-height:1.8;margin-bottom:3rem}
+.ccards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ccard{display:flex;align-items:center;gap:1.2rem;padding:1.6rem 1.8rem;background:var(--card);border:1px solid var(--border);text-decoration:none;color:var(--text);transition:all .3s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));position:relative;overflow:hidden}
+.ccard::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .4s}
+.ccard:hover{border-color:rgba(139,92,246,.4);transform:translateY(-3px);box-shadow:0 8px 28px rgba(139,92,246,.15)}
+.ccard:hover::after{width:100%}
+.ccard:hover .cico{color:var(--purple-hi)}
+.ccard:hover .clbl{color:var(--purple-hi)}
+.ccard:hover .carr{transform:rotate(-45deg);color:var(--cyan)}
+.cico{color:var(--muted);transition:color .3s;flex-shrink:0}
+.cbody{flex:1}
+.clbl{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;transition:color .3s}
+.carr{font-size:1.1rem;color:var(--muted);transition:transform .3s,color .3s}
+#certifications{background:var(--bg)}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}
+.cert-card{display:flex;align-items:center;gap:1.2rem;padding:1.6rem 1.8rem;background:var(--card);border:1px solid var(--border);position:relative;overflow:hidden;transition:all .3s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));text-decoration:none;color:var(--text)}
+.cert-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .4s}
+.cert-card:hover{border-color:rgba(139,92,246,.4);transform:translateY(-3px);box-shadow:0 8px 28px rgba(139,92,246,.15)}
+.cert-card:hover::after{width:100%}
+.cert-card:hover .cert-title{color:var(--purple-hi)}
+.cert-card:hover .carr{transform:rotate(-45deg);color:var(--cyan)}
+.cert-logo{width:48px;height:48px;background:#0d274d;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:.52rem;font-weight:700;color:#1ba0d7;letter-spacing:.05em;border:1px solid rgba(27,160,215,.3)}
+.cert-body{flex:1}
+.cert-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.25rem;transition:color .3s}
+.cert-issuer{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.3rem}
+.cert-date{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.15em}
+@media(max-width:900px){.cert-grid{grid-template-columns:1fr}}
+footer p{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--muted)}
+.flogo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--purple-hi),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.rev{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rev.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}.nav-links{gap:.8rem}
+  #hero{padding:6rem 1.5rem 3rem}
+  section{padding:4rem 1.5rem}
+  .pgrid,.ccards{grid-template-columns:1fr}
+  .educard{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .stat{padding:1.2rem .8rem}
+  .sn{font-size:2rem}
+  .btns{flex-wrap:wrap}
+  h1{font-size:clamp(2.8rem,8vw,4rem)}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">PN_</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Hire Me</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-text">
+    <h1><span class="n1">Pragati</span><span class="n2">Nashine.</span></h1>
+    <div class="hsub">Data Analyst Consultant</div>
+    <div class="rotator">
+      <div class="rline on">Transforming raw data into strategic insights through <span class="hl">Power BI dashboards</span>, SQL analysis, and data-driven storytelling.</div>
+      <div class="rline">Designing <span class="hl">dashboards</span> that turn data into action.</div>
+      <div class="rline">Turning messy data into <span class="hl">meaningful business insights</span>.</div>
+      <div class="rline">Making data <span class="hl">visible, understandable</span>, and actionable.</div>
+      <div class="rline">Building <span class="hl">BI solutions</span> that reveal what matters.</div>
+    </div>
+    <div class="btns">
+      <a href="#projects" class="bp">View Projects</a>
+      <a href="#contact" class="bo">Let's Connect</a>
+      <a href="Pragati_Resume.pdf" download class="bc">&#8595; Download CV</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="sn">2+</div><div class="sl">Years of Experience</div></div>
+  <div class="stat"><div class="sn">15+</div><div class="sl">Total Skills</div></div>
+  <div class="stat"><div class="sn">2+</div><div class="sl">BI Projects</div></div>
+</div>
+
+<section id="about">
+  <div class="tag">Who I Am</div>
+  <div class="rev">
+    <div class="aname">I'm Pragati Nashine</div>
+    <div class="arole">Data Analyst Consultant</div>
+    <p class="adesc">Insight-driven Data Analyst with strong expertise in <span class="hi">Power BI, SQL, and Excel</span>, passionate about transforming complex and large datasets into clear, actionable insights through <span class="hc">data modeling, visualization</span>, and advanced analytics to support better decision-making and improved business performance.</p>
+  </div>
+</section>
+
+<section id="skilled">
+  <div class="tag">Skilled In</div>
+  <h2>My <em>Toolkit</em></h2>
+  <div class="chips rev">
+    <div class="chip">Microsoft Excel</div><div class="chip">SQL</div>
+    <div class="chip">Power BI</div><div class="chip">Tableau</div>
+    <div class="chip">DAX</div><div class="chip">Data Analysis</div>
+    <div class="chip">Data Visualization</div><div class="chip">Data Modeling</div>
+    <div class="chip">Data Storytelling</div><div class="chip">KPI Development</div>
+    <div class="chip">Data Cleaning</div><div class="chip">EDA</div>
+    <div class="chip">CRM Analysis</div><div class="chip">Performance Analysis</div>
+    <div class="chip">Process Optimization</div><div class="chip">Reporting</div>
+    <div class="chip">Basic Python</div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="tag">Career Path</div>
+  <h2>Where I've <em>Worked</em></h2>
+  <div class="timeline">
+    <div class="exp">
+      <div class="ep">Sep 2025 — Feb 2026</div>
+      <div class="er">Data Analyst Consultant</div>
+      <div class="ec">Rubixe · Bangalore</div>
+      <ul class="eb">
+        <li>Built Power BI dashboards analyzing $578K in revenue and $319K in profit, tracking KPIs including profit margin, lead time, defect rate, and revenue vs. cost.</li>
+        <li>Evaluated supplier and vendor performance, identified risks, and improved logistics efficiency and profitability.</li>
+        <li>Developed customer behavior dashboards analyzing $148K in revenue with segmentation by age, gender, and payment method — Female: $98K vs Male: $50K; Cash: 45%.</li>
+      </ul>
+      <div class="et"><span class="etag">Power BI</span><span class="etag">Excel</span><span class="etag">DAX</span><span class="etag">Data Modeling</span><span class="etag">KPI Tracking</span></div>
+    </div>
+    <div class="exp">
+      <div class="ep">Jul 2024 — Jan 2026</div>
+      <div class="er">Academic Operations Analyst</div>
+      <div class="ec">Pigeon Education · Bengaluru</div>
+      <ul class="eb">
+        <li>Analyzed student engagement data using Excel and SQL to identify trends and improvement areas.</li>
+        <li>Performed data cleaning, validation, and EDA to ensure accurate reporting.</li>
+        <li>Automated Excel reports, reducing manual effort and improving operational efficiency.</li>
+        <li>Collaborated with cross-functional teams to present data-driven insights.</li>
+      </ul>
+      <div class="et"><span class="etag">Excel</span><span class="etag">SQL</span><span class="etag">Power BI</span><span class="etag">EDA</span><span class="etag">Reporting</span></div>
+    </div>
+    <div class="exp">
+      <div class="ep">Aug 2023 — Jul 2024</div>
+      <div class="er">Operations Analyst &#8211; Digital Finance</div>
+      <div class="ec">BYJU'S · Bengaluru</div>
+      <ul class="eb">
+        <li>Managed account and payment data to ensure timely resolution of overdue accounts.</li>
+        <li>Prepared operational and financial reports to support strategic decision-making.</li>
+        <li>Streamlined workflows through documentation and cross-team training.</li>
+        <li>Conducted audits to maintain data accuracy and operational integrity.</li>
+      </ul>
+      <div class="et"><span class="etag">Excel</span><span class="etag">Data Auditing</span><span class="etag">Reporting</span><span class="etag">Process Optimization</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="tag">Selected Work</div>
+  <h2>Projects &amp; <em>Dashboards</em></h2>
+  <div class="pgrid">
+    <div class="pcard">
+      <div class="pnum">// PROJECT_01</div>
+      <div class="ptitle">Retail Profitability &amp; Operations Intelligence</div>
+      <div class="pdesc">Designed interactive Power BI dashboards analyzing full P&amp;L visibility &#8212; tracking KPIs across profit margin, lead time, defect rate, and logistics cost efficiency.</div>
+      <div class="mrow">
+        <div><div class="mv">$578K</div><div class="mk">Revenue</div></div>
+        <div><div class="mv">$319K</div><div class="mk">Profit</div></div>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="pnum">// PROJECT_02</div>
+      <div class="ptitle">Customer Purchase Behavior Analysis</div>
+      <div class="pdesc">Built Power BI dashboards with DAX measures for customer segmentation by age, gender, and payment channel. Uncovered actionable patterns for targeted marketing optimization.</div>
+      <div class="mrow">
+        <div><div class="mv">$148K</div><div class="mk">Revenue</div></div>
+        <div><div class="mv">45%</div><div class="mk">Cash</div></div>
+        <div><div class="mv">$98K</div><div class="mk">Female Seg.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="tag">Academic Background</div>
+  <h2>My <em>Foundation</em></h2>
+  <div class="educard rev">
+    <div>
+      <div class="eyr">2019 &#8212; 2023</div>
+      <div class="edeg">B.Tech in Computer Science Engineering</div>
+      <div class="eschl">Gyan Ganga College of Technology, Jabalpur</div>
+    </div>
+    <div>
+      <div class="cgpa">8.6</div>
+      <div class="cgpal">CGPA</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="tag">Certifications</div>
+  <h2>Licenses &amp; <em>Certificates</em></h2>
+  <div class="cert-grid rev">
+
+    <a href="https://www.credly.com/earner/earned/badge/23b02c52-393c-4dff-a732-b7a429c7472e" target="_blank" rel="noopener" class="cert-card">
+      <div class="cert-logo">CISCO</div>
+      <div class="cert-body">
+        <div class="cert-title">Data Analytics Essentials</div>
+        <div class="cert-issuer">Cisco</div>
+        <div class="cert-date">Issued Feb 2026</div>
+      </div>
+      <div class="carr">&#8599;</div>
+    </a>
+
+    <a href="https://www.credly.com/earner/earned/badge/c08bfa41-dd20-4c51-9cc0-920a8fa3fe56" target="_blank" rel="noopener" class="cert-card">
+      <div class="cert-logo">CISCO</div>
+      <div class="cert-body">
+        <div class="cert-title">Cybersecurity Essentials</div>
+        <div class="cert-issuer">Cisco</div>
+        <div class="cert-date">Issued Aug 2022</div>
+      </div>
+      <div class="carr">&#8599;</div>
+    </a>
+
+    <a href="https://www.credly.com/earner/earned/badge/85cbfcb0-ae9a-411f-89a7-680a051b77d7" target="_blank" rel="noopener" class="cert-card">
+      <div class="cert-logo">CISCO</div>
+      <div class="cert-body">
+        <div class="cert-title">CCNA: Introduction to Networks</div>
+        <div class="cert-issuer">Cisco</div>
+        <div class="cert-date">Issued Sep 2021</div>
+      </div>
+      <div class="carr">&#8599;</div>
+    </a>
+
+    <a href="https://www.credly.com/earner/earned/badge/23a64134-2e13-47b6-a491-3ddbf1e9deb1" target="_blank" rel="noopener" class="cert-card">
+      <div class="cert-logo">CISCO</div>
+      <div class="cert-body">
+        <div class="cert-title">Introduction to Cybersecurity</div>
+        <div class="cert-issuer">Cisco</div>
+        <div class="cert-date">Issued Mar 2021</div>
+      </div>
+      <div class="carr">&#8599;</div>
+    </a>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="tag">Let's Talk</div>
+  <h2>Get In <em>Touch</em></h2>
+  <div class="cinner">
+    <p class="cintro rev">I'm open to new opportunities, freelance projects, and collaborations. Whether you have a data challenge or just want to connect &#8212; I'd love to hear from you.</p>
+    <div class="ccards">
+      <a id="email-link" href="#" class="ccard rev">
+        <div class="cico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <div class="cbody"><div class="clbl">Email</div></div>
+        <div class="carr">&#8599;</div>
+      </a>
+      <a href="https://www.linkedin.com/in/pragati-nashine-164219217/" target="_blank" rel="noopener" class="ccard rev">
+        <div class="cico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div class="cbody"><div class="clbl">LinkedIn</div></div>
+        <div class="carr">&#8599;</div>
+      </a>
+      <a href="tel:+916264619127" class="ccard rev">
+        <div class="cico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.06-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="cbody"><div class="clbl">Call</div></div>
+        <div class="carr">&#8599;</div>
+      </a>
+      <a href="https://wa.me/916264619127" target="_blank" rel="noopener" class="ccard rev">
+        <div class="cico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div class="cbody"><div class="clbl">WhatsApp</div></div>
+        <div class="carr">&#8599;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&#169; 2026 Pragati Nashine. All rights reserved.</p>
+  <div class="flogo">PN_</div>
+  <p>Data Analyst · Bengaluru</p>
+</footer>
+
+<script>
+// Build email link via JS to prevent Cloudflare obfuscation breaking the page
+(function(){
+  var u='nashinepragati2001';
+  var d='gmail.com';
+  var el=document.getElementById('email-link');
+  if(el){ el.href='mai'+'lto:'+u+'@'+d; }
+})();
+
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.rev,.exp,.pcard').forEach(function(el){io.observe(el);});
+document.querySelectorAll('.exp').forEach(function(el,i){el.style.transitionDelay=i*0.15+'s';});
+document.querySelectorAll('.pcard').forEach(function(el,i){el.style.transitionDelay=i*0.15+'s';});
+
+var lines=document.querySelectorAll('.rline');
+var cur=0;
+setInterval(function(){
+  lines[cur].classList.remove('on');
+  cur=(cur+1)%lines.length;
+  lines[cur].classList.add('on');
+},3200);
+</script>
+</body>
+</html>
